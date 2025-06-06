@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AIポータル・スタートページ</title>
+  <style>
+    /* ─────────  リセット  ───────── */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      height: 100%;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ─────────  レイアウト  ───────── */
+    header {
+      padding: 16px;
+      text-align: center;
+      background-color: #ffffff;
+      border-bottom: 1px solid #ddd;
+    }
+    header h1 {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    main {
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      height: calc(100% - 64px); /* ヘッダー分を除く */
+    }
+
+    /* ───  よく使うツールのアイコン群  ─── */
+    .tool-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+      gap: 12px;
+      padding: 16px;
+      list-style: none;
+      background-color: #ffffff;
+    }
+    .tool-grid li {
+      text-align: center;
+      font-size: 0.85rem;
+      transition: transform 0.1s ease;
+    }
+    .tool-grid li:hover {
+      transform: translateY(-2px);
+    }
+    .tool-grid img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+      margin-bottom: 4px;
+    }
+
+    /* ───  メモ欄（自動保存）  ─── */
+    .memo-container {
+      padding: 16px;
+      background-color: #ffffff;
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+    }
+    .memo-container label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+    #memo {
+      width: 100%;
+      height: 120px;
+      padding: 8px;
+      font-size: 0.95rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      resize: vertical;
+    }
+    .clear-btn {
+      margin-top: 4px;
+      font-size: 0.85rem;
+      color: #007bff;
+      cursor: pointer;
+    }
+    .clear-btn:hover {
+      text-decoration: underline;
+    }
+
+    /* ───  検索フォーム  ─── */
+    .search-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding: 16px;
+      background-color: #ffffff;
+      border-top: 1px solid #ddd;
+    }
+    .search-container .search-box {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .search-container input[type="text"] {
+      padding: 8px;
+      font-size: 0.95rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      width: 180px;
+    }
+    .search-container button {
+      padding: 8px 12px;
+      font-size: 0.95rem;
+      border: none;
+      background-color: #0069d9;
+      color: #fff;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .search-container button:hover {
+      background-color: #0053ba;
+    }
+
+    /* ───  フッター  ─── */
+    footer {
+      text-align: center;
+      padding: 8px;
+      font-size: 0.75rem;
+      color: #666;
+      background-color: #ffffff;
+      border-top: 1px solid #ddd;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ──  ヘッダー  ── -->
+  <header>
+    <h1>🧠 AIポータル・スタートページ</h1>
+  </header>
+
+  <main>
+    <!-- ──  よく使うツール群  ── -->
+    <ul class="tool-grid">
+      <!-- ChatGPT -->
+      <li>
+        <a href="https://chat.openai.com/" target="_blank">
+          <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/chatgpt.svg" alt="ChatGPT" />
+          <div>ChatGPT</div>
+        </a>
+      </li>
+
+      <!-- Notion -->
+      <li>
+        <a href="https://www.notion.so/" target="_blank">
+          <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/notion.svg" alt="Notion" />
+          <div>Notion</div>
+        </a>
+      </li>
+
+      <!-- Gmail -->
+      <li>
+        <a href="https://mail.google.com/" target="_blank">
+          <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/gmail.svg" alt="Gmail" />
+          <div>Gmail</div>
+        </a>
+      </li>
+
+      <!-- Google Drive -->
+      <li>
+        <a href="https://drive.google.com/" target="_blank">
+          <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/googledrive.svg" alt="Google Drive" />
+          <div>Drive</div>
+        </a>
+      </li>
+
+      <!-- X（旧Twitter） -->
+      <li>
+        <a href="https://twitter.com/" target="_blank">
+          <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/twitter.svg" alt="X (Twitter)" />
+          <div>X / Twitter</div>
+        </a>
+      </li>
+
+      <!-- Instagram -->
+      <li>
+        <a href="https://www.instagram.com/" target="_blank">
+          <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/instagram.svg" alt="Instagram" />
+          <div>Instagram</div>
+        </a>
+      </li>
+
+      <!-- Canva -->
+      <li>
+        <a href="https://www.canva.com/" target="_blank">
+          <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/canva.svg" alt="Canva" />
+          <div>Canva</div>
+        </a>
+      </li>
+
+      <!-- Buffer -->
+      <li>
+        <a href="https://buffer.com/" target="_blank">
+          <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/buffer.svg" alt="Buffer" />
+          <div>Buffer</div>
+        </a>
+      </li>
+
+      <!-- YouTube -->
+      <li>
+        <a href="https://www.youtube.com/" target="_blank">
+          <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/youtube.svg" alt="YouTube" />
+          <div>YouTube</div>
+        </a>
+      </li>
+    </ul>
+
+    <!-- ──  メモ欄（自動保存）  ── -->
+    <div class="memo-container">
+      <label for="memo">🖋️ アイデアメモ（自動保存）：</label>
+      <textarea id="memo" placeholder="思いついたアイデアやその日のひらめきをここへ…"></textarea>
+      <div class="clear-btn" onclick="clearMemo()">✏ メモをクリア</div>
+    </div>
+
+    <!-- ──  検索フォーム群  ── -->
+    <div class="search-container">
+      <!-- Google 検索 -->
+      <div class="search-box">
+        <input type="text" id="google-search" placeholder="🔍 Google 検索…" />
+        <button onclick="searchGoogle()">検索</button>
+      </div>
+
+      <!-- Google 翻訳 -->
+      <div class="search-box">
+        <input type="text" id="translate-text" placeholder="🔤 Google 翻訳…" />
+        <button onclick="searchTranslate()">翻訳</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- ──  フッター  ── -->
+  <footer>
+    © 2025 ちょっぱぱパーク構想ポータル • Local HTMLテンプレート
+  </footer>
+
+  <!-- ──  JavaScript（メモ自動保存＆検索動作）  ── -->
+  <script>
+    // ─ メモ内容の自動保存・復元 ─
+    const memoEl = document.getElementById("memo");
+    // ページ読み込み時に localStorage から復元
+    window.addEventListener("DOMContentLoaded", () => {
+      const saved = localStorage.getItem("choppaMemo");
+      if (saved) memoEl.value = saved;
+    });
+    // 入力のたびに保存
+    memoEl.addEventListener("input", () => {
+      localStorage.setItem("choppaMemo", memoEl.value);
+    });
+    // クリアボタン押下で localStorage をクリア＆テキストを空に
+    function clearMemo() {
+      if (confirm("メモを本当にクリアしますか？")) {
+        localStorage.removeItem("choppaMemo");
+        memoEl.value = "";
+      }
+    }
+
+    // ─ Google 検索 ─
+    function searchGoogle() {
+      const q = document.getElementById("google-search").value.trim();
+      if (!q) return;
+      const url = "https://www.google.com/search?q=" + encodeURIComponent(q);
+      window.open(url, "_blank");
+    }
+
+    // ─ Google 翻訳 （“翻訳元を自動検出→日本語に変換”例） ─
+    function searchTranslate() {
+      const text = document.getElementById("translate-text").value.trim();
+      if (!text) return;
+      // 翻訳元は auto、翻訳先を日本語（’ja’）に固定
+      const url = "https://translate.google.com/?sl=auto&tl=ja&text=" 
+                  + encodeURIComponent(text) + "&op=translate";
+      window.open(url, "_blank");
+    }
+  </script>
+</body>
+</html>
